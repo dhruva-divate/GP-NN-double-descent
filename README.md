@@ -1,5 +1,4 @@
 # Gaussian Processes and Double Descent
-Expanding on some thoughts that are essentially Jacot et al. 2018
 
 With this project I intend to see whether Gaussian Processes naturally bypass the double descent phenomenon that occurs with some neural networks. The double descent curve is the colloquial term for a non-monotonic pattern observed when plotting test error against model complexity: first a descent in the underparameterised regime, then a peak at the interpolation threshold (where parameters equal samples), and finally a second descent in the overparameterised regime.
 
