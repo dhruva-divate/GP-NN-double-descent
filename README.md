@@ -1,2 +1,10 @@
-# GP-NN-double-descent
+# Gaussian Processes and Double Descent
 Expanding on some thoughts that are essentially Jacot et al. 2018
+
+With this project I intend to see whether Gaussian Processes naturally bypass the double descent phenomenon that occurs with some neural networks. The double descent curve is the colloquial term for a non-monotonic pattern observed when plotting test error against model complexity: first a descent in the underparameterised regime, then a peak at the interpolation threshold (where parameters equal samples), and finally a second descent in the overparameterised regime.
+
+My intuition was that GPs might skip directly to the "second solution" on the far side of this curve, operating immediately in the benign overfitting regime where heavily overparameterised models generalise well despite perfectly fitting training data. This was prompted by a video from Welch Labs on YouTube on double descent and my recent study of Gaussian Processes. After some research, I found Jacot and colleagues' paper titled "Neural Tangent Kernel: Convergence and Generalization in Neural Networks" (NeurIPS, 2018), where my thoughts were shown to be a now well-known result.
+
+In the overparameterised regime, there are infinitely many functions that minimise the loss (achieve zero training error). Which one to pick? GPs explicitly choose the smoothest one (minimum RKHS (Reproducing Kernel Hilbert Space) norm). NNs converge towards this same choice (in the infinite-width limit).
+
+Through experiments on Concrete Strength (a UCI dataset), MNIST, and synthetic data, I hope to demonstrate that whilst neural networks exhibit the full double descent curve (including the problematic interpolation peak), Gaussian Processes maintain stable performance throughout. As NN width increases, their predictions ought to converge towards the GP solution thereby confirming that GPs represent the explicit regularisation that wide NNs only achieve implicitly. At the interpolation threshold, NNs show high variance across random initialisations whilst GPs remain deterministic as they've already selected the principled minimum-norm interpolant.
