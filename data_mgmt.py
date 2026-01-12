@@ -60,7 +60,7 @@ def mnist_data_fetch(digit_pairs=(3, 8), test_size=0.2, random_state=69, max_sam
     mnist_train = datasets.MNIST(root='./data', train=True, download=True)
     mnist_test = datasets.MNIST(root='./data', train=False, download=True)
     
-    # Combine train and test, then we'll split ourselves
+    # Combine train and test, then we split it ourselves below
     X = np.concatenate([mnist_train.data.numpy(), mnist_test.data.numpy()])
     y = np.concatenate([mnist_train.targets.numpy(), mnist_test.targets.numpy()])
     
